@@ -8,9 +8,11 @@ import Input from "@/app/common/Input";
 import Link from "next/link";
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
+import Loader from "@/app/common/Loader";
 function Login() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
+  const [loader , setLoader]= useState(false)
   const [userLog, setUserLog] = useState({
     email: "",
     password: "",
@@ -40,13 +42,18 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      debugger
+        setLoader(true)
       try {
         const response = await instance.post(`login`, userLog);
+      
         console.log(response.data, "log");
+
         if (response.data.access_token) {
           Cookies.set("access_token", response.data.access_token);
           Cookies.set("refresh_token", response.data.refresh_token);
           Cookies.set("Stepper", response.data.user.stepper);
+          
   
 
           setUserLog({
@@ -56,7 +63,7 @@ function Login() {
           });
 
           const stepper = response?.data?.user?.stepper;
-          
+          setLoader(false)
 
           if (stepper === "Active") {
          
@@ -70,6 +77,7 @@ function Login() {
           // toast.error(response.data.message);/
         }
       } catch (error) {
+        setLoader(false)
         // toast.error(error.message || "Login failed");
       }
     }
@@ -77,6 +85,7 @@ function Login() {
 
   return (
     <Container>
+      {loader ? <Loader/> :
       <div className="flex justify-center items-center gap-3">
         <div className="bg-white rounded-lg">
           <h2 className="text-[2rem] md:text-2xl font-semibold text-center">
@@ -166,7 +175,7 @@ function Login() {
             alt="Teamwork"
           />
         </div>
-      </div>
+      </div>}
     </Container>
   );
 }

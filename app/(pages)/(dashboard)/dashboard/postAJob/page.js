@@ -140,16 +140,16 @@ function PostAJob() {
     };
 
     const handleNextStep = () => {
-        // if (validateStep(stepCount)) {
+        if (validateStep(stepCount)) {
         setStepCount(stepCount + 1);
-        // }
+        }
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // if (validateStep(stepCount)) {
+        if (validateStep(stepCount)) {
        const response =  await jobCreate(formData)
       
-        // }   
+        }   
     }
 
 
