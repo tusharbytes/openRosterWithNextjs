@@ -14,7 +14,7 @@ const plans = [
         title: "Open Roster + Free",
         subtitle: "Free Plan (Freemium Model)",
         price: "$0/",
-        day: "month",
+        day: "Month",
         features: [
             "Post a limited number of job listings",
             "Access to a basic pool of RosterPros",
@@ -28,7 +28,7 @@ const plans = [
         title: "Open Roster + FlexiPlan",
         subtitle: "FlexiPlan (Essential Features)",
         price: "$17/",
-        day: "day",
+        day: "Day",
         features: [
             "Promoted job postings",
             "Set your daily budget. Start and stop campaigns anytime.",
@@ -45,7 +45,7 @@ const plans = [
         title: "Open Roster + Premium",
         subtitle: "Premium Plan (Advanced Tools)",
         price: "$250/",
-        day: "month",
+        day: "Month",
         features: [
             "Everything in the Standard Plan",
             "Featured job listings for higher visibility",
@@ -125,7 +125,7 @@ const SubscriptionPlans = () => {
                                         <h3 className="text-lg font-semibold text-center text-gray-900">{plan.title}</h3>
                                         <p className="text-sm text-center text-gray-500">{plan.subtitle}</p>
                                         {plan.price && (
-                                            <p className="text-3xl font-bold flex justify-center">
+                                            <p className="text-3xl font-bold items-center flex justify-center">
                                                 {plan.price} <span className="text-blue-500 text-xl">{plan.day}</span>
                                             </p>
                                         )}

@@ -11,6 +11,7 @@ export const userSignup = async (payload) => {
 }
 
 export const profileUpdate = async (payload) => {
+    console.log(payload,"payload")
 
     try {
         const response = await instance.patch(`business/profile-update`, payload);

@@ -9,6 +9,7 @@ import Loader from '@/app/common/Loader'
 import Input from '@/app/common/Input'
 import { getProfile } from '@/app/redux/feature/ProfileSlice'
 import { jobCreate } from '@/app/apis/Api'
+import CreateJobView from '@/app/components/(createJobView)/page'
 
 
 function PostAJob() {

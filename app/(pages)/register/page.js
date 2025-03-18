@@ -3,13 +3,12 @@ import { userSignup } from '@/app/apis/Api';
 import Input from '@/app/common/Input';
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 function Page() {
- const route = useRouter()
+  const route = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,7 +56,7 @@ function Page() {
     return Object.keys(newError).length > 0 ? newError : null;
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validation();
@@ -66,17 +65,17 @@ function Page() {
       return;
     }
 
- 
+
     setErrors({});
     const response = await userSignup(formData);
     console.log(response)
-    if(response.access_token){
-      Cookies.set( "access_token" , response.access_token)
-      Cookies.set( "refresh_token" , response.refresh_token
-      )
+    if (response.access_token) {
+      Cookies.set("access_token", response.access_token)
+      Cookies.set("refresh_token", response.refresh_token)
+      Cookies.set("Stepper", response.data.user.stepper);
 
-      if(response.data.stepper === "Profile") { 
-     route.push("/intake")
+      if (response.data.stepper === "Profile") {
+        route.push("/intake")
       }
 
     }
@@ -171,10 +170,10 @@ function Page() {
           {/* Social Login Buttons */}
           <div className="flex gap-3 justify-center">
             <span className="flex items-center font-bold rounded-xl gap-1 px-4 py-2 border cursor-pointer hover:bg-gray-100">
-            <FcGoogle /> Google
+              <FcGoogle /> Google
             </span>
             <span className="px-4 py-2 border flex items-center gap-1 rounded-xl font-bold cursor-pointer hover:bg-gray-100">
-            <FaApple /> Apple
+              <FaApple /> Apple
             </span>
           </div>
 

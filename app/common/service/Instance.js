@@ -1,14 +1,46 @@
+import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const { default: axios } = require("axios");
+// Get token from cookies
+const token = Cookies.get("access_token");
+console.log(token);
 
-const token = Cookies.get("access_token")
-console.log(token)
-
+// Create an Axios instance
 const instance = axios.create({
-    baseURL: "https://roaster.shopifystudio.xyz/api/",
-    headers: {
-        "Authorization": `Bearer ${token}`
-    }
+  baseURL: "https://roaster.shopifystudio.xyz/api/",
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 });
-export default instance
+
+// Custom Hook to Attach Interceptor
+export const useAxiosInterceptor = () => {
+const route = useRouter() // Get navigate function
+
+  useEffect(() => {
+    const responseInterceptor = instance.interceptors.response.use(
+      (response) => {
+        console.log(response)
+        // if (response.data?.stepper === "profile") {
+          
+        //   console.log("Stepper is profile, navigating to /intake");
+        //   route.push("/intake"); // Navigate to /intake
+        // }
+        return response;
+      },
+      (error) => {
+        console.error("API Error:", error);
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      instance.interceptors.response.eject(responseInterceptor);
+    };
+  }, [navigate]);
+};
+
+export default instance;

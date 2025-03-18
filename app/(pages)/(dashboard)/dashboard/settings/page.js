@@ -8,10 +8,10 @@ import React from "react";
 const settingsOptions = [
   { name: "Edit profile", path: "/dashboard/editProfile" },
   { name: "My Subscription", path: "/dashboard/subscription" },
-  { name: " Change password" },
-  { name: "Terms and conditions" },
-  { name: "Privacy policy" },
-  { name: "Help and Support" },
+  { name: " Change password", path: "/dashboard/changepassword" },
+  { name: "Terms and conditions", path: "/dashboard/subscription" },
+  { name: "Privacy policy", path: "/dashboard/policy" },
+  { name: "Help and Support", path: "/dashboard/help" },
 ];
 
 const Settings = () => {

@@ -6,6 +6,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import CreateProfile from '../dashboard/editProfile/page';
 import { useRouter } from 'next/navigation';
+import SubscriptionPlans from '../dashboard/subscription/page';
 
 
 export default function page() {
@@ -16,7 +17,7 @@ export default function page() {
     dispatch(getProfile())
   }, [])
   const profile = useSelector((state) => state?.profile)
-  console.log(profile?.stepper)
+  console.log(profile)
 
 
   return (
@@ -24,11 +25,11 @@ export default function page() {
 
       {profile?.profileData?.data?.stepper === "Profile" ? (
         <CreateProfile />)
-        : profile?.profileData?.data?.stepper === "Subscription" ? (route.push("/subscription"))
+        : profile?.profileData?.data?.stepper === "Subscription" ?  <SubscriptionPlans/>  
           :
           profile?.profileData?.data?.stepper === "Active" ? (route.push("/dashboard")) :
             (<div>
-<Loader/>
+              <Loader />
             </div>
             )
       }
