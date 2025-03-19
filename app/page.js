@@ -5,14 +5,14 @@ function Home() {
   return (
     <Container className="overflow-hidden flex h-screen">
       <div className="w-full h-[94.5vh] " >
-        <div className=" h-full bg-cover bg-bottom rounded-[32px] relative md:px-16 px-4" style={{ backgroundImage: "url('../images/bannerBg.svg')" }}>
+        <div className=" h-full bg-cover bg-bottom rounded-[32px] relative md:px-16 px-4" style={{ backgroundImage: "url('/images/bannerBg.svg')" }}>
           <div className="pt-6">
             <div className="flex justify-between items-center w-full">
 
               <div className='flex items-center'>
 
                 <img
-                  src="../images/dahboard_logo.svg"
+                  src="/images/dahboard_logo.svg"
                   alt="Logo"
                   className="h-12  cursor-pointer"
                 />
