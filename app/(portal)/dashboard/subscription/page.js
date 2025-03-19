@@ -6,7 +6,7 @@ import Loader from "@/app/common/Loader";
 import { profileUpdate } from "@/app/apis/Api";
 import { getProfile } from "@/app/redux/feature/ProfileSlice";
 import Container from "@/app/common/Container";
-import Topbar from "@/app/components/(topbar)/page";
+import Topbar from "@/app/components/Topbar/Topbar";
 
 const plans = [
     {

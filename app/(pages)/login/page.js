@@ -84,7 +84,7 @@ function Login() {
   };
 
   return (
-    <Container>
+    <>
       {loader ? <Loader/> :
       <div className="flex justify-center items-center gap-3">
         <div className="bg-white rounded-lg">
@@ -176,7 +176,7 @@ function Login() {
           />
         </div>
       </div>}
-    </Container>
+    </>
   );
 }
 

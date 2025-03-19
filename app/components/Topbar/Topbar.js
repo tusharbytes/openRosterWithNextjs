@@ -3,7 +3,6 @@ import { FcBusinessman } from "react-icons/fc";
 import { GoBell } from "react-icons/go";
 import { MdFormatListBulleted } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
 import Container from "../../common/Container";
 import Loader from "../../common/Loader";
 import { useEffect, useState } from "react";
@@ -11,6 +10,7 @@ import { getProfile } from "@/app/redux/feature/ProfileSlice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
 
 function Topbar() {
   const router = useRouter();

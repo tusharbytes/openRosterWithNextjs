@@ -4,9 +4,9 @@ import Loader from '@/app/common/Loader';
 import { getProfile } from '@/app/redux/feature/ProfileSlice';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import CreateProfile from '../dashboard/editProfile/page';
 import { useRouter } from 'next/navigation';
-import SubscriptionPlans from '../dashboard/subscription/page';
+import SubscriptionPlans from '../../(portal)/dashboard/subscription/page';
+import CreateProfile from '../../(portal)/dashboard/editProfile/page';
 
 
 export default function page() {

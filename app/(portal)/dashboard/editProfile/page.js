@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Input from "../../../../common/Input";
+import Input from "../../../common/Input";
 import { profileImage, profileUpdate } from "@/app/apis/Api";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "@/app/redux/feature/ProfileSlice";
-import Topbar from "@/app/components/(topbar)/page";
+import Topbar from "@/app/components/Topbar/Topbar";
 
 function CreateProfile() {
   const dispatch = useDispatch();

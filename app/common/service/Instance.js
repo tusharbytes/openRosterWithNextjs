@@ -1,6 +1,5 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 

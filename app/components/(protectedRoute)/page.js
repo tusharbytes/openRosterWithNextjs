@@ -26,7 +26,4 @@ function Middleware({ children }) {
 
 export default Middleware;
 
-// export const config = {
-//   matcher:["/intake", "/dashboard",]
-
-// }
+ 

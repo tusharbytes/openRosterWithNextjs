@@ -1,8 +1,6 @@
 "use client"
 
-import Container from "@/app/common/Container";
-import Topbar from "@/app/components/(topbar)/page";
-import Link from "next/link";
+ 
 import React from "react";
 
 const settingsOptions = [
@@ -16,8 +14,7 @@ const settingsOptions = [
 
 const Settings = () => {
   return (
-     <Container>
-      <Topbar/>
+     
       <div className="bg-[#F4F9Fb] h-screen  px-4 flex flex-col">
         <h2 className="text-2xl font-semibold text-center py-4 text-gray-800">
           Account Settings
@@ -36,7 +33,7 @@ const Settings = () => {
           ))}
         </div>
       </div>
-      </Container>
+      
     
   );
 };

@@ -5,8 +5,8 @@ import { getProfile } from "@/app/redux/feature/ProfileSlice";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Topbar from "@/app/components/(topbar)/page";
 import { useRouter } from "next/navigation";
+import Loader from "@/app/common/Loader";
 
 
 
@@ -21,9 +21,8 @@ const page = () => {
 
   return (
     <>
+   
       {profile === "Profile" ? route.push("/intake") :
-        <Container>
-          <Topbar />
           <div className="bg-[#F4F9FF] ">
             {/* Top Filters */}
             <div className="flex flex-col md:flex-row justify-between items-center   p-4  rounded-xl">
@@ -39,7 +38,7 @@ const page = () => {
                   type="text"
                   placeholder="Search Candidate"
                 />
-                <Link href={profile === "Profile" ? "/intake" : "dashboard/postAJob"}>  <button className="px-4 py-2 md:py-3 rounded-xl bg-blue-500 text-white shadow-md hover:bg-blue-600 transition duration-300">
+                <Link href={profile === "Profile" ? "/intake" : "dashboard/postAJob"}>  <button className="px-4 py-2 md:py-3 rounded-xl bg-gradient-to-b from-[#111111] to-[#2a527c] text-white shadow-md   transition duration-300">
                   Post New Job
 
                 </button></Link>
@@ -60,7 +59,6 @@ const page = () => {
             </div>
           </div>
 
-        </Container>
       }
     </>
   );

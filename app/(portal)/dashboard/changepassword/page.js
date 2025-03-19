@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/app/common/Button";
 import Input from "@/app/common/Input";
-import Topbar from "@/app/components/(topbar)/page";
+import Topbar from "@/app/components/Topbar/Topbar";
 import { useState } from "react";
 
 export default function ChangePassword() {
@@ -29,7 +29,7 @@ export default function ChangePassword() {
     };
 
     return (
-        <> <Topbar/>
+        <>  
         <div className="flex items-center justify-center min-h-screen bg-[#F4F9FF]">
             <div className="w-full max-w-md bg-white p-6 rounded-2xl  ">
                 <h2 className="text-2xl font-semibold text-gray-800 text-center  ">Change Password</h2>

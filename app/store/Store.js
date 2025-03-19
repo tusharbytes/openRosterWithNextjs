@@ -1,5 +1,5 @@
 "use client"
-import profileSlice from "../feature/ProfileSlice"
+import profileSlice from "../redux/feature/ProfileSlice"
 
 const { configureStore } = require("@reduxjs/toolkit")
 
