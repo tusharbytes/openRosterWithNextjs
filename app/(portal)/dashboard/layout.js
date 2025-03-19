@@ -1,6 +1,5 @@
 "use client"
 import Container from '@/app/common/Container'
-import Middleware from '@/app/components/(protectedRoute)/page'
 import Topbar from '@/app/components/Topbar/Topbar'
 import store from '@/app/store/Store'
 import React from 'react'
