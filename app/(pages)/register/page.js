@@ -83,14 +83,14 @@ function Page() {
   };
 
   return (
-    <Container>
+   
     <div className="flex justify-center items-center">
       <div className="p-6 grid grid-cols-1 md:grid-cols-2 items-center gap-6">
-        <div className="bg-white p-4   rounded-lg">
+        <div className="bg-white w-full   rounded-lg">
           <h2 className="text-[2rem] md:text-2xl text-black font-semibold text-center">Welcome</h2>
-          <p className="pb-4 text-center text-gray-500">Please enter your details below to proceed.</p>
+          <p className="pb-2 text-center text-gray-500">Please enter your details below to proceed.</p>
 
-          <form onSubmit={handleSubmit} className="space-y-2 p-2">
+          <form onSubmit={handleSubmit}>
             <Input
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -163,10 +163,10 @@ function Page() {
           </form>
 
           {/* OR Divider */}
-          <div className="flex items-center my-4 text-gray-500">
-            <div className="flex-1 h-px bg-gray-600"></div>
+          <div className="flex items-center  text-gray-500">
+            <div className="flex-1 h-[0.3px] bg-gray-600"></div>
             <span className="px-3">OR</span>
-            <div className="flex-1 h-px bg-gray-600"></div>
+            <div className="flex-1 h-[0.3px] bg-gray-600"></div>
           </div>
 
           {/* Social Login Buttons */}
@@ -180,7 +180,7 @@ function Page() {
           </div>
 
           {/* Login Redirect */}
-          <div className="text-center pt-4">
+          <div className="text-center  pt-2">
             <p>Already have an Account? <Link href={"/login"} className="text-blue-500">Login</Link></p>
           </div>
         </div>
@@ -191,7 +191,7 @@ function Page() {
         </div>
       </div>
     </div>
-    </Container>
+  
   );
 }
 

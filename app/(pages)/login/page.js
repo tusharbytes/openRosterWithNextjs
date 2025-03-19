@@ -87,19 +87,19 @@ function Login() {
 
   return (
    
-    <Container  >
+    <  >
       {loader ? <Loader/> :
-      <div className=" flex justify-center  gap-5 items-center">
+      <div className=" flex justify-center p-4  gap-5 items-center">
         <ToastContainer/>
-        <div className="bg-white rounded-lg">
+        <div className="bg-white rounded-lg ">
           <h2 className="text-[2rem] md:text-2xl font-semibold text-center">
             Welcome
           </h2>
-          <p className="pb-4 text-center text-gray-500">
+          <p className="pb-2 text-center text-gray-500">
             Please enter your details below to proceed.
           </p>
 
-          <div className="space-y-2">
+          <div className="p-2">
             <Input
               type="email"
               name="email"
@@ -147,7 +147,7 @@ function Login() {
               Sign In
             </button>
 
-            <div className="flex items-center my-4 text-gray-500">
+            <div className="flex items-center my-2 text-gray-500">
               <div className="flex-1 h-px bg-gray-600"></div>
               <span className="px-3">OR</span>
               <div className="flex-1 h-px bg-gray-600"></div>
@@ -180,7 +180,7 @@ function Login() {
           />
         </div>
       </div>}
-      </Container>
+      </>
    
   );
 }
