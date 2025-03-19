@@ -6,7 +6,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 
 export default function layout({ children }) {
-    console.log(children)
+  
     return (
       <Provider store={store}>
 

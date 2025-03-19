@@ -6,10 +6,10 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import Loader from "@/app/common/Loader";
+import Cookies from "js-cookie";
 
 
-
+const token = Cookies.get("access_token")
 const page = () => {
   const route = useRouter()
   const dipatch = useDispatch()
@@ -22,7 +22,7 @@ const page = () => {
   return (
     <Container>
    
-      {profile === "Profile" ? route.push("/intake") :
+      {profile === "Profile"   ? route.push("/intake") :
           <div className="bg-[#F4F9FF] flex-row justify-center">
             {/* Top Filters */}
             <div className="flex flex-col md:flex-row justify-between items-center   p-4  rounded-xl">

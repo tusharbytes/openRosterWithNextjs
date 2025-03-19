@@ -1,11 +1,37 @@
 import { NextResponse } from 'next/server'
- 
-// This function can be marked `async` if using `await` inside
+
 export function middleware(request) {
-  return NextResponse.redirect(new URL('/home', request.url))
+  try {
+    const token = request.cookies.get('access_token')?.value
+    console.log(token,"ppp")
+
+    const privateRoutes = [
+      '/dashboard/settings',
+      '/dashboard/editprofile',
+      '/dashboard/subscription',
+      '/dashboard'
+    ]
+
+    if (!token && privateRoutes.includes(request.nextUrl.pathname)) {
+      return NextResponse.redirect(new URL('/login', request.url))
+    }
+
+    if (token && request.nextUrl.pathname === '/login') {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+
+  } catch (error) {
+    console.error('Middleware error:', error)
+    return NextResponse.next()
+  }
+
+  return NextResponse.next()
 }
- 
-// See "Matching Paths" below to learn more
+
 export const config = {
-  matcher: '/about/:path*',
+  matcher: [
+    '/',
+    '/login',
+    '/dashboard'
+  ],
 }
