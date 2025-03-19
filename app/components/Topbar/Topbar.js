@@ -39,7 +39,7 @@ function Topbar() {
           <Loader />
         </div>
       ) : (
-        <Container>
+     
           <div className="flex flex-col md:flex-row justify-between items-center px-6 bg-white">
             {/* Logo and Mobile Menu */}
             <div className="flex items-center justify-between w-full md:w-auto">
@@ -159,7 +159,7 @@ function Topbar() {
               </ul>
             )}
           </div>
-        </Container>
+      
       )}
     </>
   );

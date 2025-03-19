@@ -20,10 +20,10 @@ const page = () => {
   const profile = useSelector((state) => state?.profile?.profileData?.data?.stepper )
 
   return (
-    <>
+    <Container>
    
       {profile === "Profile" ? route.push("/intake") :
-          <div className="bg-[#F4F9FF] ">
+          <div className="bg-[#F4F9FF] flex-row justify-center">
             {/* Top Filters */}
             <div className="flex flex-col md:flex-row justify-between items-center   p-4  rounded-xl">
               <div className="flex items-center gap-2">
@@ -60,7 +60,7 @@ const page = () => {
           </div>
 
       }
-    </>
+    </Container>
   );
 };
 

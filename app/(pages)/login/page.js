@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
 import Loader from "@/app/common/Loader";
+import { toast, ToastContainer } from "react-toastify";
 function Login() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
@@ -50,6 +51,7 @@ function Login() {
         console.log(response.data, "log");
 
         if (response.data.access_token) {
+          toast.success("user Log in Successfully")
           Cookies.set("access_token", response.data.access_token);
           Cookies.set("refresh_token", response.data.refresh_token);
           Cookies.set("Stepper", response.data.user.stepper);
@@ -74,19 +76,21 @@ function Login() {
             router.push("/intake");
           }
         } else {
-          // toast.error(response.data.message);/
+          toast.error(response.data.message);
         }
       } catch (error) {
         setLoader(false)
-        // toast.error(error.message || "Login failed");
+        toast.error(error.message || "Login failed");
       }
     }
   };
 
   return (
-    <>
+   
+    <Container  >
       {loader ? <Loader/> :
-      <div className="flex justify-center items-center gap-3">
+      <div className=" flex justify-center  gap-5 items-center">
+        <ToastContainer/>
         <div className="bg-white rounded-lg">
           <h2 className="text-[2rem] md:text-2xl font-semibold text-center">
             Welcome
@@ -176,7 +180,8 @@ function Login() {
           />
         </div>
       </div>}
-    </>
+      </Container>
+   
   );
 }
 

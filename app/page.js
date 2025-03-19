@@ -3,8 +3,8 @@ import Container from './common/Container'
 import Link from 'next/link'
 function Home() {
   return (
-    <Container className="overflow-hidden flex h-screen">
-      <div className="w-full h-[94.5vh] " >
+     
+      <div className="w-full h-[99.5vh] flex justify-center " >
         <div className=" h-full bg-cover bg-bottom rounded-[32px] relative md:px-16 px-4" style={{ backgroundImage: "url('/images/bannerBg.svg')" }}>
           <div className="pt-6">
             <div className="flex justify-between items-center w-full">
@@ -19,7 +19,7 @@ function Home() {
               </div>
 
 
-              <div className="hidden md:block">
+              <div className="">
                 <Link href="/login" className="bg-black py-4 px-10 rounded-[8px] text-white">
                   Sign in
                 </Link>
@@ -46,7 +46,7 @@ function Home() {
               </button>
             </div>
           </div>
-          <div className="hidden lg:block absolute bottom-10 right-1 md:flex justify-end items-end">
+          <div className="  lg:block absolute bottom-10 right-1 md:flex justify-end items-end">
             <img
               src="/images/girlSitting.svg"
               alt="Girl Sitting Illustration"
@@ -55,7 +55,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </Container>
+    
 
   )
 }

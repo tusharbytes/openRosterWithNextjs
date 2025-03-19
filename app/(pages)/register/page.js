@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
+import Container from '@/app/common/Container';
 function Page() {
   const route = useRouter()
   const [formData, setFormData] = useState({
@@ -82,13 +83,14 @@ function Page() {
   };
 
   return (
-    <div className="flex justify-center">
+    <Container>
+    <div className="flex justify-center items-center">
       <div className="p-6 grid grid-cols-1 md:grid-cols-2 items-center gap-6">
-        <div className="bg-white flex-row justify-center rounded-lg">
-          <h2 className="text-[2rem] md:text-2xl font-semibold text-center">Welcome</h2>
+        <div className="bg-white p-4   rounded-lg">
+          <h2 className="text-[2rem] md:text-2xl text-black font-semibold text-center">Welcome</h2>
           <p className="pb-4 text-center text-gray-500">Please enter your details below to proceed.</p>
 
-          <form onSubmit={handleSubmit} className="space-y-2">
+          <form onSubmit={handleSubmit} className="space-y-2 p-2">
             <Input
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -185,10 +187,11 @@ function Page() {
 
         {/* Image Section */}
         <div className="hidden sm:hidden md:block">
-          <img className="rounded-2xl md:h-[601px] sm:object-contain object-cover" src="/images/loginBanner.svg" alt="Teamwork" />
+          <img className="rounded-2xl md:h-[701px] sm:object-contain object-cover" src="/images/loginBanner.svg" alt="Teamwork" />
         </div>
       </div>
     </div>
+    </Container>
   );
 }
 
