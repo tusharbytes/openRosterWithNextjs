@@ -99,7 +99,7 @@ const SubscriptionPlans = () => {
 
     return (
         <>    
-        <Topbar/>     
+            
           <Container>
             {profile?.profile.loading ? (
                 <Loader />
