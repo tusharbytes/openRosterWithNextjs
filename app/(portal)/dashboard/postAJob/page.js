@@ -443,7 +443,7 @@ function PostAJob() {
                 )}
             </div>
 
-            <div className="w-[250px] flex justify-center mt-4">
+            <div className="w-[40%] flex justify-center mt-4">
                 {stepCount === 4 ? (
                     <button
                         onClick={(e) => {
@@ -461,7 +461,7 @@ function PostAJob() {
                 ) : stepCount >= 0 && stepCount <= 3 && (
                     <button
                         onClick={handleNextStep}
-                        className="bg-[#5494DC] text-white py-3 px-[6rem] rounded-3xl hover:bg-blue-600"
+                        className="bg-[#5494DC] text-white py-3 px-[6rem] w-full rounded-3xl hover:bg-blue-600"
                     >
                         Next
                     </button>

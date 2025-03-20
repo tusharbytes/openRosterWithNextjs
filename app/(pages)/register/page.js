@@ -194,7 +194,7 @@ function Page() {
         alt="Teamwork"
         width={500}                      
         height={601}                       
-        priority                         
+        priority                                
       />
         </div>
       </div>
@@ -204,4 +204,3 @@ function Page() {
 }
 
 export default Page;
-``
