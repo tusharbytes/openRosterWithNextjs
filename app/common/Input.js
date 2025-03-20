@@ -15,7 +15,7 @@ const Input = ({
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`px-3 w-full py-[1.5rem] placeholder-black outline-none border rounded-[1.375rem] ${className}`}
+                className={`px-3 w-full py-2 lg:py-[1.5rem] placeholder-black outline-none border rounded-[1.375rem] ${className}`}
             />
             {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>

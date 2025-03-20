@@ -115,7 +115,7 @@ function Topbar() {
             {/* Mobile Navigation */}
             {isOpen && (
               <ul className="md:hidden flex flex-col w-full items-center bg-white shadow-md p-4 gap-4">
-                <Link href="/dashboard/home" className="cursor-pointer hover:text-blue-500 whitespace-nowrap">
+                <Link href="/dashboard" className="cursor-pointer hover:text-blue-500 whitespace-nowrap">
                   Dashboard
                 </Link>
                 {stepper === "Profile" ? (

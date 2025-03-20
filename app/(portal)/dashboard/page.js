@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Input from "@/app/common/Input";
 
 
 const token = Cookies.get("access_token")
@@ -25,20 +26,20 @@ const page = () => {
       {profile === "Profile"   ? route.push("/intake") :
           <div className="bg-[#F4F9FF] flex-row justify-center">
             {/* Top Filters */}
-            <div className=" sm:grid-cols-1 flex    lg:flex  lg:flex-row justify-between items-center   p-4  rounded-xl">
-              <div className="flex items-center gap-2">
+            <div className="grid grid-cols-1  sm:grid-cols-2     lg:flex  lg:flex-row justify-between items-center   p-4  rounded-xl">
+              <div className="flex items-center justify-center pb-2 gap-2">
                 <p className=" text-sm font-semibold md:text-lg lg:text-lg">All Jobs</p>
-                <button className="bg-blue-500 text-white p-2 rounded-xl text-2xl">
+                <button className="bg-blue-500 text-sm text-white p-2 rounded-xl lg:text-2xl">
                   <IoOptionsOutline />
                 </button>
               </div>
-              <div className="flex  lg:flex-row gap-2 md:gap-4">
-                <input
+              <div className="md:flex  justify-items-center lg:flex-row gap-2 md:gap-4">
+                <Input
                   className="px-2 lg:px-4 border py-2 md:py-3 rounded-xl  placeholder:text-black   lg:w-auto shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   type="text"
                   placeholder="Search Candidate"
                 />
-                <Link href={profile === "Profile" ? "/intake" : "dashboard/postAJob"}>  <button className="px-4 py-2 md:py-3 rounded-xl bg-gradient-to-b from-[#111111] to-[#2a527c] text-white shadow-md   transition duration-300">
+                <Link href={profile === "Profile" ? "/intake" : "dashboard/postAJob"}>  <button className="px-4 py-2 lg:py-6 rounded-xl bg-gradient-to-b from-[#111111] to-[#2a527c] text-white shadow-md   transition duration-300">
                   Post New Job
 
                 </button></Link>
