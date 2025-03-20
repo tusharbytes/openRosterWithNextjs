@@ -8,6 +8,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 import Container from '@/app/common/Container';
+import Image from 'next/image';
 function Page() {
   const route = useRouter()
   const [formData, setFormData] = useState({
@@ -187,7 +188,14 @@ function Page() {
 
         {/* Image Section */}
         <div className="hidden sm:hidden md:block">
-          <img className="rounded-2xl md:h-[701px] sm:object-contain object-cover" src="/images/loginBanner.svg" alt="Teamwork" />
+        <Image
+        className="rounded-2xl md:h-[601px] sm:object-contain object-cover"
+        src="/images/loginBanner.svg"     
+        alt="Teamwork"
+        width={500}                      
+        height={601}                       
+        priority                         
+      />
         </div>
       </div>
     </div>

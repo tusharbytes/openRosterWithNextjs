@@ -10,6 +10,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
 import Loader from "@/app/common/Loader";
 import { toast, ToastContainer } from "react-toastify";
+import Image from "next/image";
 function Login() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
@@ -43,15 +44,15 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      debugger
+       
         setLoader(true)
       try {
         const response = await instance.post(`login`, userLog);
       
-        console.log(response.data, "log");
+        console.log(response.data.message, "log");
 
         if (response.data.access_token) {
-          toast.success("user Log in Successfully")
+          toast.success(response.data.message)
           Cookies.set("access_token", response.data.access_token);
           Cookies.set("refresh_token", response.data.refresh_token);
           Cookies.set("Stepper", response.data.user.stepper);
@@ -75,12 +76,11 @@ function Login() {
           } else {
             router.push("/intake");
           }
-        } else {
-          toast.error(response.data.message);
         }
       } catch (error) {
         setLoader(false)
         toast.error(error.message || "Login failed");
+        console.log("inn")
       }
     }
   };
@@ -173,11 +173,14 @@ function Login() {
           </div>
         </div>
         <div className="hidden md:block">
-          <img
-            className="rounded-2xl md:h-[601px] sm:object-contain object-cover"
-            src="/images/loginBanner.svg"
-            alt="Teamwork"
-          />
+        <Image
+        className="rounded-2xl md:h-[601px] sm:object-contain object-cover"
+        src="/images/loginBanner.svg"     
+        alt="Teamwork"
+        width={500}                       
+        height={601}                       
+        priority                           
+      />
         </div>
       </div>}
       </>
