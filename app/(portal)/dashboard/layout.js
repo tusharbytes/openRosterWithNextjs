@@ -9,18 +9,18 @@ import { Provider } from 'react-redux';
 export default function Layout({ children }) {
   const pathname = usePathname();
 
-  // Use an array to check multiple routes
+   
   const showTopbarRoutes = [
     '/dashboard',
     '/dashboard/settings',
     '/dashboard/editprofile',
-    '/dashboard/subscripation'
+    '/dashboard/subscription'
   ];
 
   return (
     <Provider store={store}>
       <Container>
-        {/* Render Topbar only on specified routes */}
+        
         {showTopbarRoutes.includes(pathname) && <Topbar />}
         {children}
       </Container>

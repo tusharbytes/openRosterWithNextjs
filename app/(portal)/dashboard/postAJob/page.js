@@ -450,19 +450,19 @@ function PostAJob() {
                             handleNextStep();
                             handleSubmit(e);
                         }}
-                        className="bg-[#5494DC] text-white py-3 px-[6rem] rounded-3xl hover:bg-blue-600"
+                        className="bg-[#284B70] text-white py-3 px-[6rem] rounded-3xl hover:bg-[#283570]"
                     >
                         Continue
                     </button>
                 ) : stepCount === 5 ? (
-                    <button className="bg-[#5494DC] text-white py-3 px-[6rem] rounded-3xl hover:bg-blue-600">
+                    <button className="bg-[#284B70] text-white py-3 px-[6rem] rounded-3xl hover:bg-[#283570]">
                         Update
                     </button>
                 ) : stepCount >= 0 && stepCount <= 3 && (
                     <button
                         onClick={handleNextStep}
-                        className="bg-[#5494DC] text-white py-3 px-[6rem] w-full rounded-3xl hover:bg-blue-600"
-                    >
+                        className="bg-[#284B70] text-white py-3 px-[6rem] w-full rounded-3xl hover:bg-[#283570]
+                    ">
                         Next
                     </button>
                 )}

@@ -20,21 +20,21 @@ const page = () => {
   const profile = useSelector((state) => state?.profile?.profileData?.data?.stepper )
 
   return (
-    <Container>
+    < >
    
       {profile === "Profile"   ? route.push("/intake") :
           <div className="bg-[#F4F9FF] flex-row justify-center">
             {/* Top Filters */}
-            <div className="flex flex-col md:flex-row justify-between items-center   p-4  rounded-xl">
+            <div className=" sm:grid-cols-1 flex    lg:flex  lg:flex-row justify-between items-center   p-4  rounded-xl">
               <div className="flex items-center gap-2">
-                <p className="font-semibold text-lg">All Jobs</p>
+                <p className=" text-sm font-semibold md:text-lg lg:text-lg">All Jobs</p>
                 <button className="bg-blue-500 text-white p-2 rounded-xl text-2xl">
                   <IoOptionsOutline />
                 </button>
               </div>
-              <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+              <div className="flex  lg:flex-row gap-2 md:gap-4">
                 <input
-                  className="px-4 border py-2 md:py-3 rounded-xl w-full md:w-auto shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="px-2 lg:px-4 border py-2 md:py-3 rounded-xl  placeholder:text-black   lg:w-auto shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   type="text"
                   placeholder="Search Candidate"
                 />
@@ -60,7 +60,7 @@ const page = () => {
           </div>
 
       }
-    </Container>
+    </  >
   );
 };
 

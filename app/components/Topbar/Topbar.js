@@ -42,7 +42,7 @@ function Topbar() {
      
           <div className="flex flex-col md:flex-row justify-between items-center px-6 bg-white">
             {/* Logo and Mobile Menu */}
-            <div className="flex items-center justify-between w-full md:w-auto">
+            <div className="flex items-center justify-between w-full lg:w-auto">
               <img
                 src="/images/dahboard_logo.svg"
                 alt="Logo"
@@ -50,14 +50,14 @@ function Topbar() {
               />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-3xl p-2 sm:hidden"
+                className="text-3xl p-2 lg:hidden"
               >
                 <MdFormatListBulleted />
               </button>
             </div>
 
             {/* Desktop Navigation */}
-            <ul className="hidden sm:flex flex-wrap justify-center items-center gap-4 text-lg">
+            <ul className="hidden lg:flex flex-wrap justify-center items-center gap-4 text-lg">
               <Link href="/dashboard" className="cursor-pointer hover:text-blue-500 whitespace-nowrap">
                 Dashboard
               </Link>
@@ -114,7 +114,7 @@ function Topbar() {
 
             {/* Mobile Navigation */}
             {isOpen && (
-              <ul className="sm:hidden flex flex-col w-full items-center bg-white shadow-md p-4 gap-4">
+              <ul className="md:hidden flex flex-col w-full items-center bg-white shadow-md p-4 gap-4">
                 <Link href="/dashboard/home" className="cursor-pointer hover:text-blue-500 whitespace-nowrap">
                   Dashboard
                 </Link>
