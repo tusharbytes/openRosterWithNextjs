@@ -86,105 +86,112 @@ function Login() {
   };
 
   return (
-   
-    <  >
-      {loader ? <Loader/> :
-      <div className=" flex justify-center p-4  gap-5 items-center">
-        <ToastContainer/>
-        <div className="bg-white rounded-lg ">
-          <h2 className="text-[2rem] md:text-2xl font-semibold text-center">
-            Welcome
-          </h2>
-          <p className="pb-2 text-center text-gray-500">
-            Please enter your details below to proceed.
-          </p>
+    <>
+      {loader ? (
+        <Loader />
+      ) : (
+        <div className="flex flex-col md:flex-row justify-center items-center min-h-screen p-4 gap-5">
+          <ToastContainer />
 
-          <div className="p-2">
-            <Input
-              type="email"
-              name="email"
-              value={userLog.email}
-              onChange={(e) =>
-                setUserLog({ ...userLog, email: e.target.value })
-              }
-              placeholder="Email"
-              error={errors.email}
-              autoComplete={true}
-            />
-            <Input
-              type="password"
-              value={userLog.password}
-              onChange={(e) =>
-                setUserLog({ ...userLog, password: e.target.value })
-              }
-              placeholder="Enter password"
-              error={errors.password}
-            />
-            <div className="flex justify-between">
-              <div className="flex gap-1 items-center">
-                <input
-                  checked={userLog.checked}
-                  onChange={(e) =>
-                    setUserLog({ ...userLog, checked: e.target.checked })
-                  }
-                  type="checkbox"
-                  id="terms"
-                />
-                <div>
-                  <label>Remember me</label>
-                  {errors.checked && (
-                    <p className="text-red-500 text-sm">{errors.checked}</p>
-                  )}
+          {/* Form Container */}
+          <div className="bg-white rounded-lg   w-full md:w-[500px] p-6">
+            <h2 className="text-3xl md:text-2xl font-semibold text-center">
+              Welcome
+            </h2>
+            <p className="pb-4 text-center text-gray-500">
+              Please enter your details below to proceed.
+            </p>
+
+            <div className="space-y-4">
+              <Input
+                type="email"
+                name="email"
+                value={userLog.email}
+                onChange={(e) =>
+                  setUserLog({ ...userLog, email: e.target.value })
+                }
+                placeholder="Email"
+                error={errors.email}
+                autoComplete={true}
+              />
+              <Input
+                type="password"
+                value={userLog.password}
+                onChange={(e) =>
+                  setUserLog({ ...userLog, password: e.target.value })
+                }
+                placeholder="Enter password"
+                error={errors.password}
+              />
+
+              {/* Remember me & Forgot password */}
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    checked={userLog.checked}
+                    onChange={(e) =>
+                      setUserLog({ ...userLog, checked: e.target.checked })
+                    }
+                  />
+                  <label htmlFor="terms">Remember me</label>
                 </div>
-              </div>
-              <p>Forget password</p>
-            </div>
-
-            <button
-              onClick={handleSubmit}
-              className="bg-blue-400 w-full py-4 rounded-3xl text-white font-medium hover:bg-blue-600 transition"
-            >
-              Sign In
-            </button>
-
-            <div className="flex items-center my-2 text-gray-500">
-              <div className="flex-1 h-px bg-gray-600"></div>
-              <span className="px-3">OR</span>
-              <div className="flex-1 h-px bg-gray-600"></div>
-            </div>
-
-            <div className="flex gap-3 justify-center">
-              <span className="flex items-center font-bold rounded-xl gap-1 px-4 py-2 border cursor-pointer hover:bg-gray-100">
-              <FcGoogle/>  Google
-              </span>
-              <span className="px-4 py-2 border flex items-center gap-1 rounded-xl font-bold cursor-pointer hover:bg-gray-100">
-              <FaApple/> Apple
-              </span>
-            </div>
-
-            <div className="text-center pt-4">
-              <p>
-                No have Account?{" "}
-                <Link className="text-blue-500" href="/register">
-                  Signup
+                <Link href="/forgot-password" className="text-blue-500">
+                  Forgot password?
                 </Link>
-              </p>
+              </div>
+
+              <button
+                onClick={handleSubmit}
+                className="bg-blue-500 w-full py-3 rounded-3xl text-white font-medium hover:bg-blue-600 transition"
+              >
+                Sign In
+              </button>
+
+              {/* OR separator */}
+              <div className="flex items-center my-4 text-gray-500">
+                <div className="flex-1 h-px bg-gray-400"></div>
+                <span className="px-3">OR</span>
+                <div className="flex-1 h-px bg-gray-400"></div>
+              </div>
+
+              {/* Social login buttons */}
+              <div className="flex flex-col md:flex-row gap-3 justify-center">
+                <span className="flex items-center font-bold rounded-xl gap-2 px-4 py-2 border cursor-pointer hover:bg-gray-100 w-full md:w-auto">
+                  <FcGoogle /> Google
+                </span>
+                <span className="px-4 py-2 border flex items-center gap-2 rounded-xl font-bold cursor-pointer hover:bg-gray-100 w-full md:w-auto">
+                  <FaApple /> Apple
+                </span>
+              </div>
+
+              {/* Signup link */}
+              <div className="text-center pt-4">
+                <p>
+                  No account?{" "}
+                  <Link className="text-blue-500" href="/register">
+                    Signup
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
+
+          {/* Image container */}
+          <div className="hidden md:block">
+            <Image
+              className="rounded-2xl md:h-[601px] sm:object-contain object-cover"
+              src="/images/loginBanner.svg"
+              alt="Teamwork"
+              width={500}
+              height={601}
+              priority
+            />
+          </div>
         </div>
-        <div className="hidden md:block">
-        <Image
-        className="rounded-2xl md:h-[601px] sm:object-contain object-cover"
-        src="/images/loginBanner.svg"     
-        alt="Teamwork"
-        width={500}                       
-        height={601}                       
-        priority                           
-      />
-        </div>
-      </div>}
-      </>
-   
+      )}
+    </>
   );
 }
 
