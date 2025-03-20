@@ -49,14 +49,14 @@ function Topbar() {
                 alt="Logo"
                 className="h-15 w-auto md:h-16 cursor-pointer"
               />
-              <button
+         {!isOpen ?      <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-3xl p-2 lg:hidden"
               >
                 <MdFormatListBulleted />
-              </button>
-             {isOpen && <button
-                onClick={() => setIsOpen(isOpen)}
+              </button> :
+             <button
+                onClick={() => setIsOpen(!isOpen)}
                 className="text-3xl p-2 lg:hidden"
               >
          <RxCross2 />
