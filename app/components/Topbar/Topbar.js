@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
+import { RxCross2 } from "react-icons/rx";
 
 function Topbar() {
   const router = useRouter();
@@ -54,6 +55,12 @@ function Topbar() {
               >
                 <MdFormatListBulleted />
               </button>
+             {isOpen && <button
+                onClick={() => setIsOpen(isOpen)}
+                className="text-3xl p-2 lg:hidden"
+              >
+         <RxCross2 />
+              </button>}
             </div>
 
             {/* Desktop Navigation */}

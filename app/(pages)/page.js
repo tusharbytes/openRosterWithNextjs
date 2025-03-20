@@ -19,13 +19,13 @@ function Home() {
                 width={250}    
                 height={108}
                 priority
-                className="cursor-pointer"
+                className="cursor-pointer w-[200px]"
               />
             </div>
 
 
             <div className="">
-              <Link href="/login" className="bg-black py-4 px-10 rounded-[8px] text-white">
+              <Link href="/login" className="bg-black py-4 px-2 md:px-8 lg:px-10 rounded-[8px] text-white">
                 Sign in
               </Link>
             </div>
@@ -51,7 +51,7 @@ function Home() {
             </button>
           </div>
         </div>
-        <div className="  lg:block absolute bottom-10 right-1 md:flex justify-end items-end">
+        <div className="hidden  lg:block absolute bottom-10 right-1 md:flex justify-end items-end">
           <Image
             src="/images/girlSitting.svg"
             alt="Girl Sitting Illustration"
