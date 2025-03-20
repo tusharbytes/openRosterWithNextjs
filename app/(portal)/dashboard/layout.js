@@ -13,9 +13,9 @@ export default function Layout({ children }) {
   const showTopbarRoutes = [
     '/dashboard',
     '/dashboard/settings',
-    '/dashboard/editprofile',
-    '/dashboard/subscription'
-  ];
+    '/dashboard/editProfile',
+    '/dashboard/subscription',
+  "/dashboard/changepassword",];
 
   return (
     <Provider store={store}>

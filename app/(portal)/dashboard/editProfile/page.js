@@ -5,20 +5,23 @@ import Input from "../../../common/Input";
 import { profileImage, profileUpdate } from "@/app/apis/Api";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "@/app/redux/feature/ProfileSlice";
-import Topbar from "@/app/components/Topbar/Topbar";
 
 function CreateProfile() {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
 
+ useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
+
   // Fetch profile data from Redux
   const profileData = useSelector((state) => state.profile.profileData?.data?.business);
   const email = useSelector((state) => state.profile.profileData?.data?.email);
+  const established_year = useSelector((state) => state.profile.profileData?.data?.business);
 
-  useEffect(() => {
-    dispatch(getProfile());
-  }, [dispatch]);
+
+ 
 
   // Initialize state with profile data
   const [formData, setFormData] = useState({
@@ -110,7 +113,7 @@ function CreateProfile() {
   
     <div className="p-2 max-w-xl mx-auto bg-white rounded-xl space-y-4">
     
-      <h2 className="text-2xl font-bold text-center">Company Profile</h2>
+      <h2 className="text-2xl font-bold text-center">{established_year?.established_year ?  "Edit Company Profile" : "Company Profile"}</h2>
       <div className="flex flex-col text-center items-center">
         <input onChange={handleFileChange} type="file" name="company_logo" className="hidden" id="company_logo" />
 
