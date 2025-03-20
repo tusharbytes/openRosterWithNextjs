@@ -5,6 +5,7 @@ import store from '../store/Store'
 import Container from '../common/Container'
 
 export default function layout({children}) {
+  
   return (
     <Container>
       <Provider store={store}>

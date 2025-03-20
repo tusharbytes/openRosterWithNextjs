@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import Container from './common/Container'
+import Container from '../common/Container'
 import Link from 'next/link'
 function Home() {
   return (
