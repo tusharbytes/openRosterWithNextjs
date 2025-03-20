@@ -6,7 +6,8 @@ function Home() {
   return (
 
     <div className="w-full h-[99.5vh] flex justify-center " >
-      <div className=" h-full bg-cover sm:bg-blue-400 rounded-[32px]  relative md:px-16 px-4" style={{ backgroundImage: "url('/images/bannerBg.svg')" }}>
+      <div className=" h-full bg-cover sm:bg-blue-400 rounded-[32px]  relative md:px-16 px-4" style={{ backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_URL || ""}/images/bannerBg.svg')` }}
+      >
         <div className="pt-6">
           <div className="flex justify-between items-center w-full">
 
