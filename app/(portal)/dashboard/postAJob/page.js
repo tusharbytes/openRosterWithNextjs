@@ -10,10 +10,12 @@ import Input from '@/app/common/Input'
 import { getProfile } from '@/app/redux/feature/ProfileSlice'
 import { jobCreate } from '@/app/apis/Api'
 import CreateJobView from '@/app/components/(createJobView)/CreateJobView'
+import { useRouter } from 'next/navigation'
 
 
 function PostAJob() {
     const [stepCount, setStepCount] = useState(0)
+    const route = useRouter()
 
     const title = [
         "Job Basics ",
@@ -130,7 +132,6 @@ function PostAJob() {
     }
     const timingAdd = () => {
         const formattedEntry = formatTime(time?.entrytimng);
-        console.log(formattedEntry)
         const formattedDeparture = formatTime(time?.depatureTiming);
         setFormData((prev) => ({
             ...prev,
@@ -455,7 +456,7 @@ function PostAJob() {
                         Continue
                     </button>
                 ) : stepCount === 5 ? (
-                    <button className="bg-[#284B70] text-white py-3 px-[6rem] rounded-3xl hover:bg-[#283570]">
+                    <button onClick={"/dashboard"} className="bg-[#284B70] text-white py-3 px-[6rem] rounded-3xl hover:bg-[#283570]">
                         Update
                     </button>
                 ) : stepCount >= 0 && stepCount <= 3 && (
