@@ -29,10 +29,10 @@ export default function ChangePassword() {
     };
 
     return (
-        <>  
-        <div className="flex items-center justify-center min-h-screen bg-[#F4F9FF]">
+        
+        <div className=" flex  justify-center py-4  ">
             <div className="w-full max-w-md bg-white p-6 rounded-2xl  ">
-                <h2 className="text-2xl font-semibold text-gray-800 text-center  ">Change Password</h2>
+                <h2 className="text-2xl font-semibold text-gray-800 text-center py-2 ">Change Password</h2>
                 {error && <p className="text-red-500 text-sm  text-center">{error}</p>}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -43,7 +43,7 @@ export default function ChangePassword() {
                         value={formData.currentPassword}
                         onChange={(e)=>setFormData({...formData,currentPassword : e.target.value})}
                         required
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+
                     />
                     <Input
                         type="password"
@@ -53,7 +53,7 @@ export default function ChangePassword() {
                         onChange={(e)=>setFormData({...formData,newPassword : e.target.value})}
 
                         required
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+
                     />
                     <Input
                         type="password"
@@ -63,19 +63,19 @@ export default function ChangePassword() {
                         onChange={(e)=>setFormData({...formData,confirmPassword : e.target.value})}
 
                         required
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+
                     />
                     <button
                         disabled={!formData.currentPassword || !formData.newPassword || !formData.confirmPassword}
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                        className="w-full bg-blue-600 text-white py-3 rounded-4xl hover:bg-blue-700 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
                         Update Password
                     </button>
 
                 </form>
             </div>
         </div>
-        </>
+       
 
     );
 }
