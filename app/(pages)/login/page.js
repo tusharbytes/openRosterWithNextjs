@@ -1,5 +1,5 @@
 "use client";
-import Container from "@/app/common/Container";
+import "react-toastify/dist/ReactToastify.css";
 import instance from "@/app/common/service/Instance";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
@@ -10,11 +10,13 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from "react-icons/fa6";
 import Loader from "@/app/common/Loader";
 import { toast, ToastContainer } from "react-toastify";
+
+
 import Image from "next/image";
 function Login() {
   const router = useRouter();
   const [errors, setErrors] = useState({});
-  const [loader , setLoader]= useState(false)
+  const [loader, setLoader] = useState(false)
   const [userLog, setUserLog] = useState({
     email: "",
     password: "",
@@ -44,20 +46,16 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-       
-        setLoader(true)
+
+      setLoader(true)
       try {
         const response = await instance.post(`login`, userLog);
-      
-        console.log(response.data.message, "log");
-
+        console.log(response)
         if (response.data.access_token) {
           toast.success(response.data.message)
           Cookies.set("access_token", response.data.access_token);
           Cookies.set("refresh_token", response.data.refresh_token);
           Cookies.set("Stepper", response.data.user.stepper);
-          
-  
 
           setUserLog({
             email: "",
@@ -69,7 +67,7 @@ function Login() {
           setLoader(false)
 
           if (stepper === "Active") {
-         
+
             router.push("/dashboard");
           } else if (stepper === "Subscription") {
             router.push("/dashboard/subscription");
@@ -78,9 +76,10 @@ function Login() {
           }
         }
       } catch (error) {
+
         setLoader(false)
         toast.error(error.message || "Login failed");
-        console.log("inn")
+        console.log(error.message, "inn")
       }
     }
   };
@@ -91,7 +90,16 @@ function Login() {
         <Loader />
       ) : (
         <div className="flex flex-col md:flex-row justify-center items-center min-h-screen p-4 gap-5">
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            closeOnClick
+            pauseOnHover
+            draggable
+            theme="light"
+          />
+
 
           {/* Form Container */}
           <div className="bg-white rounded-lg   w-full md:w-[500px] p-6">
@@ -157,14 +165,14 @@ function Login() {
               </div>
 
               {/* Social login buttons */}
-               <div className="flex gap-3 justify-center">
-                          <span className="flex items-center font-bold rounded-xl gap-1 px-4 py-2 border cursor-pointer hover:bg-gray-100">
-                            <FcGoogle /> Google
-                          </span>
-                          <span className="px-4 py-2 border flex items-center gap-1 rounded-xl font-bold cursor-pointer hover:bg-gray-100">
-                            <FaApple /> Apple
-                          </span>
-                        </div>
+              <div className="flex gap-3 justify-center">
+                <span className="flex items-center font-bold rounded-xl gap-1 px-4 py-2 border cursor-pointer hover:bg-gray-100">
+                  <FcGoogle /> Google
+                </span>
+                <span className="px-4 py-2 border flex items-center gap-1 rounded-xl font-bold cursor-pointer hover:bg-gray-100">
+                  <FaApple /> Apple
+                </span>
+              </div>
 
               {/* Signup link */}
               <div className="text-center pt-4">

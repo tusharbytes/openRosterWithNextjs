@@ -19,6 +19,9 @@ const page = () => {
   }, [dipatch])
 
   const profile = useSelector((state) => state?.profile?.profileData?.data?.stepper )
+  const loading = useSelector((state) => state?.profile )
+  console.log(loading,"inn")
+
 
   return (
     < >
@@ -35,6 +38,7 @@ const page = () => {
               </div>
               <div className="flex  justify-items-center lg:flex-row gap-2 md:gap-4">
                 <input
+              
                   className="   lg:px-4    md:py-3 w-[250px]   px-3  py-2 lg:py-[1rem]   outline-none border rounded-[1.375rem]   placeholder:text-black     shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   type="text"
                   placeholder="Search Candidate"

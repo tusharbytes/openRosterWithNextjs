@@ -5,6 +5,7 @@ import Input from "../../../common/Input";
 import { profileImage, profileUpdate } from "@/app/apis/Api";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "@/app/redux/feature/ProfileSlice";
+import Loader from "@/app/common/Loader";
 
 function CreateProfile() {
   const dispatch = useDispatch();
@@ -17,8 +18,12 @@ function CreateProfile() {
 
   // Fetch profile data from Redux
   const profileData = useSelector((state) => state.profile.profileData?.data?.business);
+  const loader = useSelector((state) => state.profile.profileData);
+  console.log(loader.loading,"loderrd")
+
   const email = useSelector((state) => state.profile.profileData?.data?.email);
   const established_year = useSelector((state) => state.profile.profileData?.data?.business);
+  console.log(established_year?.image,"inn")
 
 
  
@@ -110,15 +115,15 @@ function CreateProfile() {
 
   return (
     <>
-  
-    <div className="p-2 max-w-xl mx-auto bg-white rounded-xl space-y-4">
+  {loader.loading ? <Loader/> : 
+    <div className="p-2 px-4 max-w-xl mx-auto bg-white rounded-xl space-y-4">
     
       <h2 className="text-2xl font-bold text-center">{established_year?.established_year ?  "Edit Company Profile" : "Company Profile"}</h2>
       <div className="flex flex-col text-center items-center">
         <input onChange={handleFileChange} type="file" name="company_logo" className="hidden" id="company_logo" />
 
         <label htmlFor="company_logo" className="text-center text-2xl bg-gray-100 cursor-pointer rounded-[50%] w-[6rem] h-[6rem] flex items-center justify-center border overflow-hidden">
-          {preview ? <img src={preview} className="w-full h-full object-cover" /> : "\\"}
+          {preview ||established_year?.image ? <img src={preview ||established_year?.image } className="w-full h-full object-cover" /> : "\\"}
         </label>
 
         <p className="cursor-pointer text-blue-500">Click to upload your company logo</p>
@@ -169,7 +174,7 @@ function CreateProfile() {
       <div className="flex justify-center w-full">
         <button onClick={handleSubmit} className="text-center bg-blue-400 text-white py-3 px-[5rem] md:px-[10rem] rounded-3xl hover:bg-blue-600">Save</button>
       </div>
-    </div>
+    </div>}
     </>
   );
 }

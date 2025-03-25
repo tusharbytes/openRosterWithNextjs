@@ -6,7 +6,7 @@ function Home() {
   return (
 
     <div className="w-full h-[99.5vh] flex justify-center " >
-      <div className=" h-full bg-cover sm:bg-blue-400 rounded-[32px]  relative md:px-16 px-4" style={{ backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_URL || ""}/images/bannerBg.svg')` }}
+      <div className=" h-full bg-cover sm:bg-blue-400 rounded-[32px]  relative md:px-16 px-4" style={{ backgroundImage: `url('/images/bannerBg.svg')` }}
       >
         <div className="pt-6">
           <div className="flex justify-between items-center w-full">
@@ -32,8 +32,7 @@ function Home() {
           </div>
         </div>
         <div className="mt-4 lg:mt-8 ">
-          <h1 className="uppercase  font-bold sm:leading-[80px] leading-[70px] md:leading-[150px] xl:leading-[170.98px] text-white  text-[50px]   
-                      sm:text-[80px] lg:tracking-wide md:text-[150px] xl:text-[170px] py-2">
+          <h1 className="uppercase  font-bold sm:leading-[80px] leading-[70px] md:leading-[150px] xl:leading-[170.98px] text-white  text-[50px]    sm:text-[80px] lg:tracking-wide md:text-[150px] xl:text-[170px] py-2">
             POST YOUR JOB
           </h1>
           <div className="max-w-[750px] mt-6 lg:mt-0">

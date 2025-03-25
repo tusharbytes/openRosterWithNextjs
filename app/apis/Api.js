@@ -1,8 +1,11 @@
 import instance from "../common/service/Instance"
 
 export const userSignup = async (payload) => {
-    try {
+   
+    try { 
+ 
         const response = await instance.post(`signup`, payload)
+        console.log(response, "response")
         return response.data
     } catch {
         console.log(response.data.errors)

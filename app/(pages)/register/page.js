@@ -17,7 +17,8 @@ function Page() {
     contact_Number: "",
     password: "",
     confirm_password: "",
-    checked: false
+    checked: false,
+    role:"Business"
   });
 
   const [errors, setErrors] = useState({});
@@ -69,14 +70,15 @@ function Page() {
 
 
     setErrors({});
-    const response = await userSignup(formData);
-    console.log(response)
+    const response = await userSignup(formData);  
+   
+    console.log(response,"?innnegister")
     if (response.access_token) {
       Cookies.set("access_token", response.access_token)
       Cookies.set("refresh_token", response.refresh_token)
       Cookies.set("Stepper", response.data.user.stepper);
 
-      if (response.data.stepper === "Profile") {
+      if (response?.data?.stepper === "Profile") {
         route.push("/intake")
       }
 
