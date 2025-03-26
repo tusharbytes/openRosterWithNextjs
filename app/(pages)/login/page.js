@@ -190,7 +190,7 @@ function Login() {
           <div className="hidden md:block">
             <Image
               className="rounded-2xl md:h-[601px] sm:object-contain object-cover"
-              src="/images/loginBanner.svg"
+              src="assets/images/loginBanner.svg"
               alt="Teamwork"
               width={500}
               height={601}

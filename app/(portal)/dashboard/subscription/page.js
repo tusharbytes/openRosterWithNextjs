@@ -79,10 +79,8 @@ const plans = [
 
 const SubscriptionPlans = () => {
     const dispatch = useDispatch();
-    const [loader, setLoader] = useState(false);
     
     useEffect(() => {
-        setLoader(true);
         dispatch(getProfile());
     }, [dispatch]);
 
@@ -92,7 +90,6 @@ const SubscriptionPlans = () => {
     console.log("Active Plan:", activePlan);
 
     const handleAddPlan = async (planTitle) => {
-        setLoader(true);
         await profileUpdate({ plan: planTitle });
         dispatch(getProfile()) ;
     };
@@ -100,17 +97,17 @@ const SubscriptionPlans = () => {
     return (
         <>    
             
-          <Container>
+        
             {profile?.profile.loading ? (
                 <Loader />
             ) : (
-                <div className="bg-blue-50 py-2">
-                    <div className="px-4">
+                <div className="bg-blue-50 py-2 p-4">
+                    <div className="px-4 p-4">
                         <h2 className="text-3xl font-bold text-center  ">Choose your right plan!</h2>
                         <p className="text-gray-600 text-center pb-2">
                             Select from best plans, ensuring a perfect match. Need more or less? Customize your subscription for a seamless fit!
                         </p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {plans.map((plan) => {
                                 const isActive = activePlan === plan.title;
 
@@ -158,7 +155,7 @@ const SubscriptionPlans = () => {
                     </div>
                 </div>
             )}
-        </Container></>
+     </>
 
     );
 };

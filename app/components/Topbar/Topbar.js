@@ -46,7 +46,7 @@ function Topbar() {
           {/* Logo and Mobile Menu */}
           <div className="flex items-center justify-between w-full lg:w-auto">
             <img
-              src="/images/dahboard_logo.svg"
+              src="assets/images/dahboard_logo.svg"
               alt="Logo"
               className="h-15 w-auto md:h-16 cursor-pointer"
             />
