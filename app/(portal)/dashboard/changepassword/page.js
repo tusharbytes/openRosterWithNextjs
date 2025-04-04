@@ -25,7 +25,6 @@ export default function ChangePassword() {
         }
 
         // Call API to update password (mock function here)
-        console.log("Password updated successfully", formData);
     };
 
     return (

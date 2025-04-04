@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server'
 export function middleware(request) {
   try {
     const token = request.cookies.get('access_token')?.value
-    console.log(token,"ppp")
 
     const privateRoutes = [
       '/dashboard/settings',

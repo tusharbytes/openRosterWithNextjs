@@ -26,7 +26,6 @@ function Topbar() {
   const profileData = profile?.profileData || {};
   const businessImage = profileData?.data?.business?.image;
   const stepper = profileData?.stepper;
-  console.log("inn")
 
   const handleLogOut = () => {
     Cookies.remove("access_token");

@@ -2,7 +2,6 @@ import Input from '@/app/common/Input';
 import React from 'react'
 
 function CreateJobView({formData}) {
-    console.log(formData,"inn")
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg">
     <div className="text-center mb-6">

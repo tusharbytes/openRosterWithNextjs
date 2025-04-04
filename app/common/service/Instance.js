@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 // Get token from cookies
 const token = Cookies.get("access_token");
-console.log(token);
 
 // Create an Axios instance
 const instance = axios.create({
@@ -22,7 +21,6 @@ const route = useRouter() // Get navigate function
   useEffect(() => {
     const responseInterceptor = instance.interceptors.response.use(
       (response) => {
-        console.log(response)
         // if (response.data?.stepper === "profile") {
           
         //   console.log("Stepper is profile, navigating to /intake");

@@ -20,7 +20,6 @@ const page = () => {
 
   const profile = useSelector((state) => state?.profile?.profileData?.data?.stepper )
   const loading = useSelector((state) => state?.profile )
-  console.log(loading,"inn")
 
 
   return (
@@ -43,7 +42,7 @@ const page = () => {
                   type="text"
                   placeholder="Search Candidate"
                 />
-                <Link href={profile === "Profile" ? "/intake" : "dashboard/postAJob"}>  <button className="lg:px-4 px-1 py-2 lg:py-4 rounded-xl bg-gradient-to-b from-[#111111] to-[#2a527c] text-white shadow-md   transition duration-300">
+                <Link href={profile === "Profile" ? "/intake" : "dashboard/postAJob"} className="">  <button className="lg:px-4  px-1 py-2 lg:py-4 rounded-xl bg-gradient-to-b from-[#111111] to-[#2a527c] text-white shadow-md   transition duration-300">
                   Post New Job
 
                 </button></Link>

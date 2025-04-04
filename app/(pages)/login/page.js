@@ -50,7 +50,7 @@ function Login() {
       setLoader(true)
       try {
         const response = await instance.post(`login`, userLog);
-        console.log(response)
+        console.log(response , "logg")
         if (response.data.access_token) {
           toast.success(response.data.message)
           Cookies.set("access_token", response.data.access_token);
@@ -74,12 +74,11 @@ function Login() {
           } else {
             router.push("/intake");
           }
-        }
+        } 
       } catch (error) {
 
         setLoader(false)
         toast.error(error.message || "Login failed");
-        console.log(error.message, "inn")
       }
     }
   };

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Input from "../../../common/Input";
 import { profileImage, profileUpdate } from "@/app/apis/Api";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,27 +13,20 @@ function CreateProfile() {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const route = useRouter()
+  const route = useRouter();
 
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
 
-  // Fetch profile data from Redux
   const profileData = useSelector((state) => state.profile.profileData?.data);
-  console.log(profileData, "uoo")
-
   const loader = useSelector((state) => state.profile.profileData);
-  console.log(loader.loading, "loderrd")
 
-  const email = useSelector((state) => state.profile.profileData?.data?.email);
-  const established_year = useSelector((state) => state.profile.profileData?.data?.business);
-  console.log(established_year?.image, "inn")
+  // Memoized values
+  const email = useMemo(() => profileData?.email, [profileData]);
+  const businessData = useMemo(() => profileData?.business || {}, [profileData]);
+  const established_year = useMemo(() => businessData?.established_year, [businessData]);
 
-
-
-
-  // Initialize state with profile data
   const [formData, setFormData] = useState({
     legal_company: "",
     name: "",
@@ -41,35 +34,33 @@ function CreateProfile() {
     email: "",
     mobile_number: "",
     licensed_number: "",
-    state_licensed: "sdacda",
+    state_licensed: "",
     address_1: "",
     address_2: "",
     city: "",
     state: "",
     zip_code: "",
   });
-  console.log(formData, "dsdd")
 
-  // Update formData when profileData is fetched
   useEffect(() => {
     if (profileData) {
       setFormData({
-        legal_company: profileData?.business?.legal_company || "",
-        business_name: profileData?.business?.name || "",
-        established_year: profileData?.business.established_year || "",
+        legal_company: businessData.legal_company || "",
+        name: businessData.name || "",
+        established_year: businessData.established_year || "",
         email: email || "",
-        mobile_number: profileData?.business.mobile_number || "",
-        licensed_number: profileData?.business.licensed_number || "",
-        state_licensed: profileData?.business.state_licensed || "",
-        address_1: profileData?.business.address_1 || "",
-        address_2: profileData?.business.address_2 || "",
-        city: profileData?.business.city || "",
-        state: profileData?.business.state || "",
-        zipCode: profileData?.business.zip_code || "",
+        mobile_number: businessData.mobile_number || "",
+        licensed_number: businessData.licensed_number || "",
+        state_licensed: businessData.state_licensed || "",
+        address_1: businessData.address_1 || "",
+        address_2: businessData.address_2 || "",
+        city: businessData.city || "",
+        state: businessData.state || "",
+        zip_code: businessData.zip_code || "",
       });
-      setPreview(profileData?.business.image || null);
+      setPreview(businessData.image || null);
     }
-  }, [profileData, email]);
+  }, [profileData, email, businessData]);
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -91,7 +82,7 @@ function CreateProfile() {
     if (!formData.mobile_number) {
       newError.mobile_number = "Mobile number is required";
     } else if (!/^\d+$/.test(formData.mobile_number)) {
-      newError.contact_mobile_numberNumber = "Only digits are allowed in the mobile number";
+      newError.mobile_number = "Only digits are allowed in the mobile number";
     } else if (formData.mobile_number.length !== 10) {
       newError.mobile_number = "Mobile number must be exactly 10 digits";
     }
@@ -108,25 +99,37 @@ function CreateProfile() {
     e.preventDefault();
     if (validation()) {
       const response = await profileUpdate(formData);
+      console.log(response?.data, "response");
       if (response?.data) {
-        route.push("/intake")
-      }else{
-        toast.error("profile not Created")
+        route.push("/intake");
+      } else {
+        toast.error("Profile not created");
       }
     }
   };
 
   return (
     <>
-      {loader.loading ? <Loader /> :
+      {loader.loading ? (
+        <Loader />
+      ) : (
         <div className="p-2 px-4 max-w-xl mx-auto bg-white rounded-xl space-y-4">
+          <h2 className="text-2xl font-bold text-center">
+            {established_year ? "Edit Company Profile" : "Company Profile"}
+          </h2>
 
-          <h2 className="text-2xl font-bold text-center">{established_year?.established_year ? "Edit Company Profile" : "Company Profile"}</h2>
           <div className="flex flex-col text-center items-center">
             <input onChange={handleFileChange} type="file" name="company_logo" className="hidden" id="company_logo" />
 
-            <label htmlFor="company_logo" className="text-center text-2xl bg-gray-100 cursor-pointer rounded-[50%] w-[6rem] h-[6rem] flex items-center justify-center border overflow-hidden">
-              {preview || established_year?.image ? <img src={preview} className="w-full h-full object-cover" /> : "\\"}
+            <label
+              htmlFor="company_logo"
+              className="text-center text-2xl bg-gray-100 cursor-pointer rounded-[50%] w-[6rem] h-[6rem] flex items-center justify-center border overflow-hidden"
+            >
+              {preview || businessData?.image ? (
+                <img src={preview || businessData.image} className="w-full h-full object-cover" />
+              ) : (
+                "\\"
+              )}
             </label>
 
             <p className="cursor-pointer text-blue-500">Click to upload your company logo</p>
@@ -145,7 +148,7 @@ function CreateProfile() {
             <Input name="established_year" type="number" value={formData.established_year} onChange={(e) => setFormData({ ...formData, established_year: e.target.value })} error={error.established_year} />
 
             <label>Email</label><span className="text-red-500">*</span>
-            <Input name="email" type="email" value={formData.email} />
+            <Input name="email" type="email" value={formData.email} readOnly />
 
             <label>Mobile number</label>
             <Input name="mobile_number" type="number" value={formData.mobile_number} onChange={(e) => setFormData({ ...formData, mobile_number: e.target.value })} error={error.mobile_number} />
@@ -159,7 +162,7 @@ function CreateProfile() {
             <h2 className="py-2">Company Address<span className="text-red-500">*</span></h2>
 
             <label>Address 1</label>
-            <Input name="address1" value={formData.address_1} onChange={(e) => setFormData({ ...formData, address_1: e.target.value })} error={error.address1} />
+            <Input name="address1" value={formData.address_1} onChange={(e) => setFormData({ ...formData, address_1: e.target.value })} error={error.address_1} />
 
             <label>Address 2</label>
             <Input name="address2" value={formData.address_2} onChange={(e) => setFormData({ ...formData, address_2: e.target.value })} />
@@ -175,9 +178,12 @@ function CreateProfile() {
           </div>
 
           <div className="flex justify-center w-full">
-            <button onClick={handleSubmit} className="text-center bg-blue-400 text-white py-3 px-[5rem] md:px-[10rem] rounded-3xl hover:bg-blue-600">Save</button>
+            <button onClick={handleSubmit} className="text-center bg-blue-400 text-white py-3 px-[5rem] md:px-[10rem] rounded-3xl hover:bg-blue-600">
+              Save
+            </button>
           </div>
-        </div>}
+        </div>
+      )}
     </>
   );
 }
