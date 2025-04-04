@@ -6,11 +6,14 @@ import { profileImage, profileUpdate } from "@/app/apis/Api";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "@/app/redux/feature/ProfileSlice";
 import Loader from "@/app/common/Loader";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 function CreateProfile() {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const route = useRouter()
 
   useEffect(() => {
     dispatch(getProfile());
@@ -38,12 +41,12 @@ function CreateProfile() {
     email: "",
     mobile_number: "",
     licensed_number: "",
-    state_licensed: "",
+    state_licensed: "sdacda",
     address_1: "",
     address_2: "",
     city: "",
     state: "",
-    zipCode: "",
+    zip_code: "",
   });
   console.log(formData, "dsdd")
 
@@ -104,15 +107,12 @@ function CreateProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validation()) {
-      try {
-        await profileUpdate(formData);
-        toast.success("Profile updated successfully!");
-      } catch (error) {
-        toast.error("Failed to update profile.");
-        console.error("Error updating profile:", error);
+      const response = await profileUpdate(formData);
+      if (response?.data) {
+        route.push("/intake")
+      }else{
+        toast.error("profile not Created")
       }
-    } else {
-      console.log("Form validation failed", error);
     }
   };
 
@@ -139,7 +139,7 @@ function CreateProfile() {
             <Input name="legal_company" value={formData.legal_company} onChange={(e) => setFormData({ ...formData, legal_company: e.target.value })} error={error.legal_company} />
 
             <label>Business name</label><span className="text-red-500">*</span>
-            <Input name="business_name" value={formData.name || formData.business_name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} error={error.name} />
+            <Input name="business_name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} error={error.name} />
 
             <label>Established year</label><span className="text-red-500">*</span>
             <Input name="established_year" type="number" value={formData.established_year} onChange={(e) => setFormData({ ...formData, established_year: e.target.value })} error={error.established_year} />
@@ -171,7 +171,7 @@ function CreateProfile() {
             <Input name="state" value={formData.state} onChange={(e) => setFormData({ ...formData, state: e.target.value })} error={error.state} />
 
             <label>Zip/Postal code</label>
-            <Input name="zipCode" type="number" value={formData.zipCode} onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })} error={error.zip_code} />
+            <Input name="zipCode" type="number" value={formData.zip_code} onChange={(e) => setFormData({ ...formData, zip_code: e.target.value })} error={error.zip_code} />
           </div>
 
           <div className="flex justify-center w-full">

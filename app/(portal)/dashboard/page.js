@@ -54,7 +54,7 @@ const page = () => {
             <div className="bg-white flex flex-col items-center justify-center min-h-[60vh] p-6 rounded-lg mt-6">
               <img
                 className="w-[200px] md:w-[350px] h-auto"
-                src="/images/nojob.jpg"
+                src="assets/images/nojob.jpg"
                 alt="No jobs"
               />
               <p className="text-center mt-4 text-gray-600 text-lg">No jobs listed</p>
